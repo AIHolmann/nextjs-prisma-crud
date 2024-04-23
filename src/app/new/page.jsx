@@ -28,8 +28,6 @@ function NewPage({ params }) {
         },
       });
       const data = await res.json();
-      console.log(data, "*********************** de la actualizacion");
-      router.refresh();
     } else {
       //en el fetch se puede abrebiar la URL asi porque es un componente del lado del cliente
       const res = await fetch("/api/task", {
@@ -40,7 +38,6 @@ function NewPage({ params }) {
         },
       });
       const data = await res.json();
-      router.refresh();
     }
     router.refresh();
     router.push("/");

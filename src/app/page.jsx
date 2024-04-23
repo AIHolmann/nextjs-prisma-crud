@@ -1,17 +1,17 @@
 import TaskCard from "@/components/TaskCard";
-// import { prisma } from "@/libs/prisma";
+import { prisma } from "@/libs/prisma";
 
 async function loadTask() {
   //como este es un componente del lado del servidor gracias a nextjs, y la base de datos/servidor estan integradas en la misma aplicacion, y se van a desplegar en el mismo lugar; se puede:
   // 1º llamar a prisma y acceder a la base de datos desde aqui
-  // const tasks = await prisma.task.findMany();
+  return await prisma.task.findMany();
   // console.log(tasks);
   // 2º hacer una peticion HHTP a /api/tasks
-  const res = await fetch("http://localhost:3000/api/task", {
-    cache: "no-store",
-  });
-  const data = await res.json();
-  return data;
+  //const res = await fetch("http://localhost:3000/api/task", {
+  //  cache: "no-store",
+  //});
+  //const data = await res.json();
+  //return data;
 }
 
 export default async function HomePage() {
