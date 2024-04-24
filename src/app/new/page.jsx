@@ -17,6 +17,15 @@ function NewPage({ params }) {
     }
   }, []);
 
+  const handleClick = async (event) => {
+    const res = await fetch(`/api/task/${params.id}`, {
+      method: "DELETE",
+    });
+    const data = await res.json();
+    router.refresh();
+    router.push("/");
+  };
+
   const onSubmit = async (event) => {
     event.preventDefault();
     if (params?.id) {
@@ -85,17 +94,7 @@ function NewPage({ params }) {
             <button
               className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
               type="button"
-              onClick={async () => {
-                const res = await fetch(
-                  `http://localhost:3000/api/task/${params.id}`,
-                  {
-                    method: "DELETE",
-                  }
-                );
-                const data = await res.json();
-                router.refresh();
-                router.push("/");
-              }}
+              onClick={handleClick}
             >
               Delete
             </button>
